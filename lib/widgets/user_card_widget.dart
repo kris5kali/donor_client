@@ -92,7 +92,7 @@ class UserCard extends StatelessWidget {
                 Row(
                   children: <Widget>[
                     Icon(
-                      Icons.directions_car,
+                      Icons.location_on,
                       color: Colors.black,
                       size: 20,
                     ),

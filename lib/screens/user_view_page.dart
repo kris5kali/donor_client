@@ -96,7 +96,7 @@ class UserViewPage extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Text("Tanggal Terakhir Donor"),
+                          Text(user.role == 'Pasien'? "Tanggal Membutuhkan":'Tanggal Terakhir Donor'),
                           Container(
                               width: 150,
                               padding: EdgeInsets.all(10),
@@ -108,8 +108,22 @@ class UserViewPage extends StatelessWidget {
                                   user.tanggalMembutuhkan ?? 'Data Kosong'))
                         ],
                       ),
-                      SizedBox(height: 50),
-                      SizedBox(height: 50),
+                      SizedBox(height: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text('Membutuhkan'),
+                          Container(
+                              width: 150,
+                              padding: EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                border: Border.all(),
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              child: Text("${user.membutuhkanDarah} kantong"))
+                        ],
+                      ),
+                      SizedBox(height: 100),
                       Text(
                         "Pengguna aplikasi bisa menghubungi admin \nuntuk keperluan lebih lanjut",
                         textAlign: TextAlign.center,

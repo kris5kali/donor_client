@@ -20,7 +20,7 @@ class KontakAdminPage extends StatelessWidget {
         ),
       ),
       body: FutureBuilder<List<UserModel>>(
-        future: pendonorProv.fetchPendonorList(),
+        future: pendonorProv.fetchAdminList(),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
