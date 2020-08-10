@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
@@ -591,7 +592,7 @@ class _ProfilePageState extends State<ProfilePage> {
               obscureText: false,
               initialValue: user['membutuhkanDarah'],
               keyboardType: TextInputType.number,
-              prefixIcon: Icon(Icons.phone),
+              prefixIcon: Icon(FlutterIcons.blood_bag_mco),
               hintText: 'Masukkan total',
               onChanged: (value) => profileProv.membutuhkanDarahChanged(value),
             ),
@@ -650,8 +651,8 @@ class _ProfilePageState extends State<ProfilePage> {
               validator: profileProv.validateText,
               obscureText: false,
               initialValue: user['tanggalMembutuhkan'],
-              keyboardType: TextInputType.number,
-              prefixIcon: Icon(Icons.phone),
+              keyboardType: TextInputType.text,
+              prefixIcon: Icon(Icons.date_range),
               hintText: 'Masukkan Tanggal',
               onChanged: (value) =>
                   profileProv.tanggalMembutuhkanChanged(value),
@@ -710,8 +711,8 @@ class _ProfilePageState extends State<ProfilePage> {
               validator: profileProv.validateText,
               obscureText: false,
               initialValue: user['alamat'],
-              keyboardType: TextInputType.number,
-              prefixIcon: Icon(Icons.phone),
+              keyboardType: TextInputType.text,
+              prefixIcon: Icon(Icons.location_on),
               hintText: 'Masukkan Alamat Lengkap',
               onChanged: (value) => profileProv.alamatChanged(value),
             ),
@@ -771,8 +772,8 @@ class _ProfilePageState extends State<ProfilePage> {
               validator: profileProv.validateText,
               obscureText: false,
               initialValue: user['golonganDarah'],
-              keyboardType: TextInputType.number,
-              prefixIcon: Icon(Icons.phone),
+              keyboardType: TextInputType.text,
+              prefixIcon: Icon(FlutterIcons.blood_bag_mco),
               hintText: 'Masukkan Golongan Darah',
               onChanged: (value) => profileProv.golonganDarahChanged(value),
             ),

@@ -82,7 +82,7 @@ class AuthProvider with ChangeNotifier {
   }) async {
     /// [Check E-MAIL] if e-mail already exists and null
     List<String> checkUserEmailIfAlreadyExist =
-    await _firebaseAuth.fetchSignInMethodsForEmail(email: emailStr);
+        await _firebaseAuth.fetchSignInMethodsForEmail(email: emailStr);
     if (checkUserEmailIfAlreadyExist != null &&
         checkUserEmailIfAlreadyExist.length > 0) {
       showAlertDialog(context: buildContext, title: "Email Sudah digunakan");
@@ -98,7 +98,7 @@ class AuthProvider with ChangeNotifier {
         password: passwordStr,
       )
           .then(
-            (user) async {
+        (user) async {
           notifyListeners();
           // _isLoading = false;
           setUserDocument(
@@ -108,7 +108,7 @@ class AuthProvider with ChangeNotifier {
               "username": usernameStr,
               "email": emailStr,
               "image":
-              "https://i.pinimg.com/564x/51/f6/fb/51f6fb256629fc755b8870c801092942.jpg",
+                  "https://i.pinimg.com/564x/51/f6/fb/51f6fb256629fc755b8870c801092942.jpg",
               "role": role,
               "alamat": null,
               "golonganDarah": null,
@@ -126,7 +126,7 @@ class AuthProvider with ChangeNotifier {
                   "username": usernameStr,
                   "email": emailStr,
                   "image":
-                  "https://i.pinimg.com/564x/51/f6/fb/51f6fb256629fc755b8870c801092942.jpg",
+                      "https://i.pinimg.com/564x/51/f6/fb/51f6fb256629fc755b8870c801092942.jpg",
                   "role": role,
                   "alamat": null,
                   "golonganDarah": null,
@@ -144,7 +144,7 @@ class AuthProvider with ChangeNotifier {
                   "username": usernameStr,
                   "email": emailStr,
                   "image":
-                  "https://i.pinimg.com/564x/51/f6/fb/51f6fb256629fc755b8870c801092942.jpg",
+                      "https://i.pinimg.com/564x/51/f6/fb/51f6fb256629fc755b8870c801092942.jpg",
                   "role": role,
                   "alamat": null,
                   "golonganDarah": null,
@@ -156,32 +156,19 @@ class AuthProvider with ChangeNotifier {
               );
             }
           }).then(
-                (_) =>
-                getUserDocumentById(user.user.uid).then((value) {
-                  _userModel = value;
-                }).whenComplete(
-                      () {
-                    _isLoading = false;
-                    Get.back();
-                  },
-                ),
+            (_) => getUserDocumentById(user.user.uid).then((value) {
+              _userModel = value;
+            }).whenComplete(
+              () {
+                _isLoading = false;
+                Get.back();
+              },
+            ),
           );
-        }
-        ,
+        },
       );
-      return
-        true;
-    }
-
-    on PlatformException
-
-    catch
-
-    (
-
-    e
-
-    ) {
+      return true;
+    } on PlatformException catch (e) {
       if (e.code == 'ERROR_EMAIL_ALREADY_IN_USE') {
         _auth = Auth.Unauthenticated;
         notifyListeners();
@@ -206,9 +193,9 @@ class AuthProvider with ChangeNotifier {
       notifyListeners();
       await _firebaseAuth
           .signInWithEmailAndPassword(
-        email: emailStr,
-        password: passwordStr,
-      )
+            email: emailStr,
+            password: passwordStr,
+          )
           .whenComplete(() => _isLoading = false);
       return true;
     } on PlatformException catch (e) {
@@ -226,7 +213,7 @@ class AuthProvider with ChangeNotifier {
           case 'The password is invalid or the user does not have a password.':
             errorType = AuthProblems.PasswordNotValid;
             FlushbarHelper.createError(
-                message: 'Kombinasi email dan password salah')
+                    message: 'Kombinasi email dan password salah')
                 .show(buildContext);
             _isLoading = false;
             notifyListeners();
@@ -236,14 +223,14 @@ class AuthProvider with ChangeNotifier {
           case 'A network error (such as timeout, interrupted connection or unreachable host) has occurred.':
             errorType = AuthProblems.NetworkError;
             FlushbarHelper.createError(
-                message: 'Terjadi kesalahan pada jaringan')
+                    message: 'Terjadi kesalahan pada jaringan')
                 .show(buildContext);
             _isLoading = false;
             notifyListeners();
 
             return false;
             break;
-        // ...
+          // ...
           default:
             print('Case ${e.message} is not jet implemented');
         }
@@ -270,7 +257,7 @@ class AuthProvider with ChangeNotifier {
 
             return false;
             break;
-        // ...
+          // ...
           default:
             print('Case ${e.message} is not jet implemented');
         }
@@ -289,9 +276,7 @@ class AuthProvider with ChangeNotifier {
     return Future.delayed(Duration.zero);
   }
 
-  AuthProvider.instance()
-      :
-        _firebaseAuth = FirebaseAuth.instance {
+  AuthProvider.instance() : _firebaseAuth = FirebaseAuth.instance {
     try {
 // _googleSignIn = GoogleSignIn();
       _firebaseAuth.onAuthStateChanged.listen(_onAuthStateChanged);

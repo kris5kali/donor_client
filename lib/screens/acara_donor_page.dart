@@ -12,6 +12,7 @@ class AcaraDonorPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
+        title: Text('Acara Donor',style:kHeadline3),
       ),
       body: FutureBuilder<List<AcaraDonorModel>>(
           future: acaraProv.fetchListAcaraDonor(),

@@ -26,21 +26,21 @@ class UserCard extends StatelessWidget {
       ),
       child: Stack(
         children: <Widget>[
-          Positioned(
+         user.role == 'Pasien'? Positioned(
             top: 0,
             right: 0,
             child: Container(
               height: 24.0,
               width: 80.0,
-              decoration: BoxDecoration(color: Colors.blue[100]),
+              decoration: BoxDecoration(color: kPrimaryColor),
               child: Center(
                 child: Text(
-                  "Rhesus +",
-                  style: TextStyle(color: Colors.blueAccent),
+                  "Urgent",
+                  style: TextStyle(color: Colors.white),
                 ),
               ),
             ),
-          ),
+          ) : Container(),
           Positioned(
             top: 12,
             bottom: 12,
@@ -69,7 +69,7 @@ class UserCard extends StatelessWidget {
                 SizedBox(height: 8),
                 Row(
                   children: <Widget>[
-                    Icon(FlutterIcons.transgender_alt_faw),
+                    Icon(user.jenisKelamin == 'Laki-laki'? FlutterIcons.md_male_ion:FlutterIcons.md_female_ion),
                     SizedBox(width: 10),
                     Text(user.jenisKelamin ?? 'Data Kosong',
                         style: kDescription),
