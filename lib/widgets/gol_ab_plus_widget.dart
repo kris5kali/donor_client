@@ -1,3 +1,4 @@
+import 'package:donor/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class GolDarahABPlus extends StatelessWidget {
@@ -5,6 +6,8 @@ class GolDarahABPlus extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+
+        backgroundColor: kPrimaryColor,
         title: Text('Golongan Darah AB+'),
         centerTitle: true,
       ),
