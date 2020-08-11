@@ -50,49 +50,6 @@ class _ProfilePageState extends State<ProfilePage> {
                   var user = snapshot.data;
                   _dataAccount = user;
                   genderRole = user['role'];
-//                  profileProv.username = user['username'];
-//                  profileProv.email = user['email'];
-//                  profileProv.noHp = user['noHp'];
-//                  profileProv.golonganDarah = user['golonganDarah'];
-//                  profileProv.alamat = user['alamat'];
-//                  profileProv.jenisKelamin = user['jenisKelamin'];
-//                  profileProv.tanggalMembutuhkan = user['tanggalMembutuhkan'];
-//                  profileProv.membutuhkanDarah = user['membutuhkanDarah'];
-//                  profileProv.urlImage = user['urlImage'];
-//                  profileProv.role = user['role'];
-                  break;
-
-                default:
-              }
-              switch (snapshot.connectionState) {
-                case ConnectionState.none:
-                  return Center(child: CircularProgressIndicator());
-                  break;
-                case ConnectionState.waiting:
-                  return Center(child: CircularProgressIndicator());
-                  break;
-                case ConnectionState.done:
-                  if (snapshot.hasError) {
-                    return Center(child: Text('Something error'));
-                  }
-                  if (!snapshot.hasData) {
-                    return Center(child: Text('No Data'));
-                  }
-                  break;
-                case ConnectionState.active:
-                  var user = snapshot.data;
-                  _dataAccount = user;
-                  genderRole = user['role'];
-//                  profileProv.username = user['username'];
-//                  profileProv.email = user['email'];
-//                  profileProv.noHp = user['noHp'];
-//                  profileProv.golonganDarah = user['golonganDarah'];
-//                  profileProv.alamat = user['alamat'];
-//                  profileProv.jenisKelamin = user['jenisKelamin'];
-//                  profileProv.tanggalMembutuhkan = user['tanggalMembutuhkan'];
-//                  profileProv.membutuhkanDarah = user['membutuhkanDarah'];
-//                  profileProv.urlImage = user['urlImage'];
-//                  profileProv.role = user['role'];
                   break;
 
                 default:
@@ -100,7 +57,7 @@ class _ProfilePageState extends State<ProfilePage> {
               var user = snapshot.data;
               return Container(
                 child: SingleChildScrollView(
-                  child: profileProv.role == "Pasien"
+                  child: genderRole == "Pasien"
                       ? Column(
                           children: <Widget>[
                             Center(
@@ -116,14 +73,13 @@ class _ProfilePageState extends State<ProfilePage> {
                                                 title: profileProv.imageFile
                                                     .toString()))
                                         .then((value) {
-                                      profileProv.updateDocumentUser(
-                                          authProv.userModel.id,
-                                          {"image": profileProv.urlImage});
                                       profileProv.updateDocumentPasien(
                                           authProv.userModel.id,
                                           {"image": profileProv.urlImage});
-                                      profileProv.clear();
-                                    });
+                                      profileProv.updateDocumentUser(
+                                          authProv.userModel.id,
+                                          {"image": profileProv.urlImage});
+                                    }).then((value) => profileProv.clear());
                                   },
                                   child: profileProv.imageFile != null
                                       ? CircleAvatar(
