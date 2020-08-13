@@ -11,7 +11,7 @@ class PendonorProvider with ChangeNotifier {
   List<UserModel> get listUserModel => _listUserModel;
 
   Future<List<UserModel>> fetchPendonorList() async {
-    var result = await _apiPendonor.getDataCollections();
+    var result = await _apiPendonor.getDataUsers();
     _listUserModel =
         result.documents.map((e) => UserModel.fromFirestore(e)).toList();
     return _listUserModel;

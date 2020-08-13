@@ -16,6 +16,10 @@ class Api {
   Future<QuerySnapshot> getDataCollections() async {
     return await collectionReference.getDocuments();
   }
+  /// [GET] list document in [Collection]
+  Future<QuerySnapshot> getDataUsers() async {
+    return await collectionReference.orderBy('tanggalMembutuhkan',descending: true).getDocuments();
+  }
 
   /// [GET] document by [ID]
   Future<DocumentSnapshot> getDocumentById(String id) {

@@ -7,6 +7,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:intl/intl.dart';
 
 import '../models/user_model.dart';
 import '../utils/api.dart';
@@ -26,11 +27,12 @@ class ProfileProvider with ChangeNotifier {
   String _golonganDarah;
   String _alamat;
   String _jenisKelamin;
-
   String _tanggalMembutuhkan;
   String _membutuhkanDarah;
   String _urlImage;
   String _role;
+  DateTime _selectedDate = DateTime.now();
+  String _dateStr;
   File _imageFile;
   FirebaseStorage _firebaseStorage =
       FirebaseStorage(storageBucket: 'gs://donor-ce9fb.appspot.com');
@@ -45,6 +47,9 @@ class ProfileProvider with ChangeNotifier {
 
   bool get autoValidate => _autoValidate;
 
+  DateTime get selectedDate => _selectedDate;
+
+  String get dateStr => _dateStr;
   String get username => _username;
 
   String get email => _email;
@@ -76,6 +81,15 @@ class ProfileProvider with ChangeNotifier {
   StorageUploadTask get storageUploadTask => _storageUploadTask;
 
   Firestore get firestore => _firestore;
+
+  set dateStr(String value) {
+    _dateStr = value;
+    notifyListeners();
+  }
+  set selectedDate(DateTime value) {
+    _selectedDate = value;
+    notifyListeners();
+  }
 
   set autoValidate(bool value) {
     _autoValidate = value;
@@ -144,7 +158,7 @@ class ProfileProvider with ChangeNotifier {
     notifyListeners();
   }
 
-   set isUploading(bool isLoading) {
+  set isUploading(bool isLoading) {
     _isUploading = isLoading;
     notifyListeners();
   }
@@ -238,6 +252,7 @@ class ProfileProvider with ChangeNotifier {
     await _pasienApi.removeDocumentById(id);
     return;
   }
+
   Future removeDocumentPendonor(String id) async {
     await _pendonorApi.removeDocumentById(id);
     return;
@@ -294,5 +309,19 @@ class ProfileProvider with ChangeNotifier {
     }
 
     return null;
+  }
+
+  Future<void> selectDate(BuildContext context) async {
+    final DateTime picked = await showDatePicker(
+        context: context,
+        initialDate: selectedDate,
+        firstDate: DateTime(2015, 8),
+        lastDate: DateTime(2101));
+    if (picked != null && picked != selectedDate) {
+      var dateString = DateFormat('dd-MM-yyyy').format(picked);
+      dateStr = dateString;
+      notifyListeners();
+    }
+
   }
 }

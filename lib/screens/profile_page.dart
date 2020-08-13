@@ -192,19 +192,70 @@ class _ProfilePageState extends State<ProfilePage> {
                                       },
                                     ),
                                     SizedBox(height: 10),
-                                    profileItem(
-                                      title: 'Tanggal Membutuhkan',
-                                      value: user['tanggalMembutuhkan'],
+                                    GestureDetector(
                                       onTap: () {
-                                        changeTanggalMembutuhkanDialog(
-                                          context: context,
-                                          profileProv: profileProv,
-                                          user: user,
-                                          authProv: authProv,
-                                          role: _dataAccount['role'],
-                                        );
+                                        profileProv
+                                            .selectDate(context)
+                                            .then((value) {
+                                          print(profileProv.selectedDate);
+                                          profileProv.updateDocumentUser(
+                                              authProv.userModel.id, {
+                                            "tanggalMembutuhkan":
+                                                profileProv.dateStr,
+                                          });
+                                          profileProv.updateDocumentPasien(
+                                              authProv.userModel.id, {
+                                            "tanggalMembutuhkan":
+                                                profileProv.dateStr,
+                                          });
+                                        });
                                       },
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: <Widget>[
+                                          Text(
+                                            'Tanggal Kebutuhan',
+                                            style: kDescription,
+                                          ),
+                                          Container(
+                                            width: 150,
+                                            padding: EdgeInsets.all(10),
+                                            decoration: BoxDecoration(
+                                              border: Border.all(),
+                                              borderRadius:
+                                                  BorderRadius.circular(15),
+                                            ),
+                                            child: Text(_dataAccount[
+                                                    'tanggalMembutuhkan'] ??
+                                                '-'),
+                                          )
+                                        ],
+                                      ),
                                     ),
+//                                    profileItem(
+//                                      title: 'Tanggal Kebutuhan',
+//                                      value: user['tanggalMembutuhkan'],
+//                                      onTap: () {
+//                                        profileProv
+//                                            .selectDate(context)
+//                                            .then((value) {
+//                                          print(profileProv.selectedDate);
+//                                          profileProv.updateDocumentPasien(
+//                                              authProv.userModel.id, {
+//                                            "tanggalMembutuhkan":
+//                                                profileProv.selectedDate,
+//                                          });
+//                                        });
+//                                        changeTanggalMembutuhkanDialog(
+//                                          context: context,
+//                                          profileProv: profileProv,
+//                                          user: user,
+//                                          authProv: authProv,
+//                                          role: _dataAccount['role'],
+//                                        );
+//                                      },
+//                                    ),
                                     SizedBox(height: 10),
                                     GestureDetector(
                                       onTap: () {
@@ -220,7 +271,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: <Widget>[
-                                          Text("Membutuhkan Darah"),
+                                          Text("Jumlah kantong"),
                                           Container(
                                               width: 150,
                                               padding: EdgeInsets.all(10),
@@ -382,13 +433,27 @@ class _ProfilePageState extends State<ProfilePage> {
                                       title: 'Tanggal Membutuhkan',
                                       value: user['tanggalMembutuhkan'],
                                       onTap: () {
-                                        changeTanggalMembutuhkanDialog(
-                                          context: context,
-                                          profileProv: profileProv,
-                                          user: user,
-                                          authProv: authProv,
-                                          role: _dataAccount['role'],
-                                        );
+                                        profileProv
+                                            .selectDate(context)
+                                            .then((value) {
+                                          profileProv.updateDocumentUser(
+                                              authProv.userModel.id, {
+                                            "tanggalMembutuhkan":
+                                                profileProv.dateStr,
+                                          });
+                                          profileProv.updateDocumentPendonor(
+                                              authProv.userModel.id, {
+                                            "tanggalMembutuhkan":
+                                                profileProv.dateStr,
+                                          });
+                                        });
+//                                        changeTanggalMembutuhkanDialog(
+//                                          context: context,
+//                                          profileProv: profileProv,
+//                                          user: user,
+//                                          authProv: authProv,
+//                                          role: _dataAccount['role'],
+//                                        );
                                       },
                                     ),
                                     SizedBox(height: 10),
@@ -406,7 +471,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: <Widget>[
-                                          Text("Membutuhkan Darah"),
+                                          Text("Jumlah kantong"),
                                           Container(
                                               width: 150,
                                               padding: EdgeInsets.all(10),

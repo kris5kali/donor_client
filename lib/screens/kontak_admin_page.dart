@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../models/user_model.dart';
 import '../utils/constants.dart';
-import 'pendonor_provider.dart';
+import '../providers/pendonor_provider.dart';
 
 class KontakAdminPage extends StatelessWidget {
   @override
@@ -114,7 +114,7 @@ class KontakAdminPage extends StatelessWidget {
                                   border: Border.all(),
                                 ),
                                 child: new Text(
-                                  admin.noHp,
+                                  admin.noWA,
                                   style: TextStyle(fontSize: 20),
                                 )),
                           ],

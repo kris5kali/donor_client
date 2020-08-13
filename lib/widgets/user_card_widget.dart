@@ -92,14 +92,14 @@ class UserCard extends StatelessWidget {
                 Row(
                   children: <Widget>[
                     Icon(
-                      Icons.location_on,
+                      FlutterIcons.water_mco,
                       color: Colors.black,
                       size: 20,
                     ),
                     SizedBox(width: 10),
                     Container(
                       width: MediaQuery.of(context).size.width - 200,
-                      child: Text(user.alamat ?? 'Data Kosong',
+                      child: Text(user.golonganDarah ?? 'Data Kosong',
                           overflow: TextOverflow.ellipsis, style: kDescription),
                     ),
                   ],

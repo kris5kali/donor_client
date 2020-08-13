@@ -10,7 +10,7 @@ class PasienProvider with ChangeNotifier {
   List<UserModel> get listUserModel => _listUserModel;
 
   Future<List<UserModel>> fetchPasienList() async {
-    var result = await _apiPasien.getDataCollections();
+    var result = await _apiPasien.getDataUsers();
     _listUserModel =
         result.documents.map((e) => UserModel.fromFirestore(e)).toList();
     return _listUserModel;

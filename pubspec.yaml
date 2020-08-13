@@ -25,6 +25,7 @@ dependencies:
   custom_radio_grouped_button: ^1.0.2
   modal_bottom_sheet: ^0.2.0+1
   combos: ^1.2.0
+  intl: ^0.16.1
 
 
 dev_dependencies:

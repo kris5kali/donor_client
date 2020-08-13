@@ -112,7 +112,7 @@ class UserViewPage extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Text('Membutuhkan'),
+                          Text('Jumlah kantong'),
                           Container(
                               width: 150,
                               padding: EdgeInsets.all(10),

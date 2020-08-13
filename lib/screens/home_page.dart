@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/auth_provider.dart';
-import '../providers/kontak_admin_page.dart';
+import 'kontak_admin_page.dart';
 import '../utils/constants.dart';
 import 'acara_donor_page.dart';
 import 'informasi_page.dart';
